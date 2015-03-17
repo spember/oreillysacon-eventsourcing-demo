@@ -1,0 +1,68 @@
+import org.springframework.boot.gradle.run.BootRunTask
+
+buildscript {
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.2.1.RELEASE"
+        //classpath 'org.springframework:springloaded:1.2.0.RELEASE'
+    }
+    repositories {
+        jcenter()
+    }
+}
+
+apply plugin: 'groovy'
+apply plugin: "idea"
+apply plugin: "eclipse"
+apply plugin: "spring-boot"
+
+
+repositories {
+    jcenter()
+    mavenLocal()
+
+    maven {
+        url "${System.getenv('ARTIFACTORY_3C_URL')}"
+        //Add authentication details to repository connection
+        credentials {
+            username = "${System.getenv('ARTIFACTORY_3C_USERNAME')}"
+            password = "${System.getenv('ARTIFACTORY_3C_PASSWORD')}"
+        }
+    }
+}
+
+dependencies {
+    compile "org.codehaus.groovy:groovy-all:2.3.9"
+    // our es library
+    compile "com.thirdchannel:eventsource:0.0.3-SNAPSHOT"
+
+    compile "io.reactivex:rxjava:1.0.4"
+
+    // flyway for migrations!
+    compile "org.flywaydb:flyway-core:3.1"
+
+    compile "org.springframework.boot:spring-boot-starter-thymeleaf:1.2.1.RELEASE"
+    compile "org.springframework.boot:spring-boot-starter-data-jpa:1.2.1.RELEASE"
+
+
+
+    runtime 'org.postgresql:postgresql:9.3-1101-jdbc41'
+
+    testCompile 'org.spockframework:spock-core:1.0-groovy-2.3'
+    testCompile 'org.spockframework:spock-spring:1.0-groovy-2.3'
+    testCompile 'org.springframework:spring-test:4.1.4.RELEASE'
+}
+
+run {
+    main = 'pember.demo.escommerce.Application'
+}
+
+
+tasks.withType(BootRunTask) {
+    // ensure that we're using the dev property when using bootRun
+    systemProperty('spring.profiles.active', 'dev')
+}
+
+test {
+    systemProperty('spring.profiles.active', 'test')
+}
+

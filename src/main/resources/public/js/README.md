@@ -1,0 +1,1 @@
+I put as little 3rd party sources into the repos as possible, but I'm working on this on train with often spotty service

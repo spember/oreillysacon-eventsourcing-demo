@@ -1,0 +1,69 @@
+spring:
+
+  datasource:
+    driverClassName:               org.postgresql.Driver
+    initialSize:                   5
+    logAbandoned:                  false
+    maxActive:                     100
+    maxIdle:                       100
+    maxWait:                       30000
+    minEvictableIdleTimeMillis:    60000
+    minIdle:                       10
+    removeAbandoned:               false
+    removeAbandonedTimeout:        60
+    testOnBorrow:                  true
+    testOnReturn:                  false
+    testWhileIdle:                 true
+    timeBetweenEvictionRunsMillis: 5000
+    validationInterval:            30000
+    validationQuery:               select 1
+    # Tomcat JDBC Enhanced Attributes
+    abandonWhenPercentageFull:     0
+    alternateUsernameAllowed:      false
+    # TRANSACTION_READ_COMMITTED
+    defaultTransactionIsolation:   2
+    fairQueue:                     true
+    jdbcInterceptors:              ConnectionState
+    jmxEnabled:                    true
+    maxAge:                        0
+    suspectTimeout:                0
+    useEquals:                     true
+
+  jpa:
+#    open-in-view: true
+    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+#      naming-strategy:
+
+#server
+#  port 9000
+
+logging:
+  level:
+    org.jooq: INFO
+    com.thirdchannel: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+---
+
+spring:
+  profiles: dev
+
+  datasource:
+    url:      jdbc:postgresql://localhost/demo_es
+    username: admin
+    password:
+
+---
+
+spring:
+  profiles: test
+
+  datasource:
+    url:      jdbc:postgresql://localhost/demo_es_test
+    username: admin
+    password:
+
+---

@@ -1,0 +1,103 @@
+.product-list-inner {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.product {
+    width: 10em;
+    margin: auto;
+    border: 2px solid #cccccc;
+}
+.product .image-container {
+    height: 12em;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.product img {
+    width: 90%;
+}
+
+.btn {
+    display: inline-block;
+    border: 2px solid #000000;
+    background: none;
+    border-radius: 5px;
+    padding: 2px 6px;
+    font-size: 1.0em;
+    vertical-align: middle;
+}
+.btn.primary {
+    border-color: #f15f51;
+    color: #f15f51;
+    font-weight: 600;
+}
+
+#counter {
+    position: absolute;
+    right: 2em;
+    top: 1em;
+}
+
+#counter .shopping-cart-counter {
+    position: relative;
+    padding: 0.5em;
+    cursor: pointer;
+
+}
+
+#cartList {
+    position: absolute;
+    right: 2em;
+    top: 4em;
+    border: 2px solid #f15f51;
+    background-color:#ffffff;
+    width: 30em;
+    padding: 1em 0.5em;
+    display: none;
+}
+#cartList.active {
+    display: block;
+}
+
+#cartList .footer {
+    margin-top: 1em;
+}
+
+#cartList .btn {
+    cursor: pointer;
+}
+
+#cartList .close {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    cursor: pointer;
+}
+
+.shopping-cart-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.shopping-cart-row .description {
+    align-self: center;
+
+}
+
+.shopping-cart-row img {
+    width: 3em;
+    align-self: center;
+}
+
+.shopping-cart-row .controls {
+    align-self: center;
+}
+
+.shopping-cart-row .count-input {
+    width: 2em;
+    font-size: 1.1em;
+}
