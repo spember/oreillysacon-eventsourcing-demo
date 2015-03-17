@@ -39,7 +39,6 @@ class ProductService {
         if (product) {
             eventSourceService.loadCurrentState(product)
         }
-
         product
     }
 
